@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Home/Admin.cshtml";
+}
+
+@using (Html.BeginForm(FormMethod.Get))
+{
+    <center><h1>View Rating</h1></center>
+    <table align="center">
+        <tr>
+            <td>Rating Id</td>
+            <td>User Rating</td>
+            <td>Date</td>
+            <td>User Id</td>
+        </tr>
+
+        @{
+    System.Data.DataTable dt = (System.Data.DataTable)ViewData["data"];
+        }
+        @foreach (System.Data.DataRow row in dt.Rows)
+        {
+            <tr>
+                <td>@row["rating_id"]</td>
+                <td>@row["user_rating"]</td>
+                <td>@row["date"]</td>
+                <td>@row["user_id"]</td>
+            </tr>
+        }
+
+    </table>
+}
+

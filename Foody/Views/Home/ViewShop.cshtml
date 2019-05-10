@@ -1,0 +1,62 @@
+﻿@{
+    Layout = "~/Views/Home/Admin.cshtml";
+}
+
+@using (Html.BeginForm(FormMethod.Get))
+{
+            
+    <center><h1>View Shops</h1></center>
+    <table align="center"> 
+        <tr>
+            <td>Shop Id</td>
+            <td>Shop Name</td>
+            <td>User Id</td>
+            <td>Owner Name</td>
+            <td>Address</td>
+            <td>Pincode</td>
+            <td>Shop Type</td>
+            <td>Mobile</td>
+            <td>E-mail</td>
+            <td>Registration Number</td>
+            <td>Description</td>
+            <td>Latitude</td>
+            <td>Longitude</td>
+        </tr>
+
+        @{
+    System.Data.DataTable dt = (System.Data.DataTable)ViewData["data"];
+        }
+        @foreach (System.Data.DataRow row in dt.Rows)
+        {
+            <tr>
+                <td>@row["shop_id"]</td>
+                <td>@row["shop_name"]</td>
+                <td>@row["user_id"]</td>
+                <td>@row["owner_name"]</td>
+                <td>@row["address"]</td>
+                <td>@row["pincode"]</td>
+                <td>@row["shop_type"]</td>
+                <td>@row["mobile"]</td>
+                <td>@row["email"]</td>
+                <td>@row["registration_no"]</td>
+                <td>@row["description"]</td>
+                <td>@row["latitude"]</td>
+                <td>@row["longitude"]</td>
+                <td><a href="../Home/RemoveShop?id=@row["shop_id"]">Remove</a></td>
+                <td><a href="../Home/UpdateShop?id=@row["shop_id"]">Update</a></td>
+            </tr>
+        }
+
+    </table>
+    
+ 
+    @*<b>Search Option:</b>
+    @Html.RadioButton("option","Name")<text>Name</text>
+    @Html.RadioButton("option","Type")<text>Type</text>
+    @Html.TextBox("search")<input type="submit" name="submmit" value="search" />*@
+}
+
+}
+
+
+

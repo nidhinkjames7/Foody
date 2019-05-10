@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "~/Views/Home/Admin.cshtml";
+}
+
+
+@using (Html.BeginForm(FormMethod.Get))
+{
+
+    <center><h1>View Shop Admin</h1></center>
+    <table align="center">
+        <tr>
+            <td>Shop Admin Id</td>
+            <td>Shop Admin Name</td>
+            <td>Shop Name</td>
+            <td>Owner Name</td>
+            <td>Address</td>
+            <td>Dob</td>
+            <td>Mobile</td>
+            <td>E-mail</td>
+            <td>Photo</td>
+        </tr>
+
+        @{
+    System.Data.DataTable dt = (System.Data.DataTable)ViewData["data"];
+        }
+        @foreach (System.Data.DataRow row in dt.Rows)
+        {
+            <tr>                
+                <td>@row["shop_admin_id"]</td>
+                <td>@row["admin_name"]</td>
+                <td>@row["shop_name"]</td>
+                <td>@row["owner_name"]</td>
+                <td>@row["address"]</td>
+                <td>@row["dob"]</td>
+                <td>@row["mobile"]</td>
+                <td>@row["email"]</td>
+                <td>@row["photo"]</td>
+                <td><a href="../Home/RemoveShopAdmin?id=@row["shop_admin_id"]">Remove</a></td>
+                <td><a href="../Home/EditShopAdmin?id=@row["shop_admin_id"]">Edit</a></td>
+            </tr>
+        }
+
+    </table>
+
+}
+    @*<b>Search Option:</b>
+    @Html.RadioButton("option", "Name")<text>Name</text>
+    @Html.RadioButton("option", "Type")<text>Type</text>
+    @Html.TextBox("search")<input type="submit" name="submmit" value="search" />*@
+
+
+
