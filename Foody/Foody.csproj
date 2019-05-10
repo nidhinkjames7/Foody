@@ -231,6 +231,7 @@
     <Content Include="Views\Home\RegisterShopAdmin.cshtml" />
     <Content Include="Views\Home\ViewShopAdmin.cshtml" />
     <Content Include="Views\Home\LoginForm.cshtml" />
+    <Content Include="Views\Home\UpdateShop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

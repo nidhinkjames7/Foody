@@ -225,11 +225,11 @@ namespace Foody.Controllers
             {
 
             }
-            return RedirectToAction("LoadShopAdminData");
+            return RedirectToAction("UpdateShopData");
         }
-        [ActionName("LoadShopAdminData")]
+        [ActionName("UpdateShopData")]
 
-        public ActionResult LoadShopAdminData()
+        public ActionResult UpdateShopData()
         {
             DataTable dt = new DataTable();
             try
@@ -241,7 +241,7 @@ namespace Foody.Controllers
             {
 
             }
-            return View("../Home/ViewShopAdmin");
+            return View("../Home/UpdateShop");
         }
 
 
