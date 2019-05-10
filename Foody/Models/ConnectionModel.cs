@@ -72,22 +72,37 @@ namespace Foody.Models
 
         //UPDATE SHOP
 
-        public void UpdateShop(int ShopId)
+        public DataTable UpdateShop(int ShopId)
         {
+            dt = new DataTable();
             try
             {
                 MakeConnection();
-                cmd = new MySqlCommand("UPDATE shops SET user_id=''  where shop_id=" + ShopId + "", con);
-                cmd.ExecuteNonQuery();
+                cmd = new MySqlCommand("SELECT * FROM shops where shop_id="+ShopId+"", con);
+                reader = cmd.ExecuteReader();
+                dt.Load(reader);
                 con.Close();
             }
             catch (Exception e)
             {
 
             }
+            return dt;
         }
 
+        public void UpdateShopData(string shop_name,int user_id,string owner_name,string address,int pincode,string shop_type,int mobile,string email,string registration_no,string description,string logitude, string latitude)
+        {
+            try
+            {
+                MakeConnection();
+                cmd= new MySqlCommand("UPDATE shops SET shop_name='"+shop_name+"',user_id='"+user_id+"',owner_name='"+owner_name+"',address='"+address+"',pincode='"+pincode+"','"+shop_type+"',mobile='"+mobile+"',email='"+email+"',registration_no='"+registration_no+"',description='"+description+"',logitude='"+logitude+"',latitude='"+latitude+"' ",con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch(Exception e){
 
+            }
+        }
 
 
 

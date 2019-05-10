@@ -212,7 +212,7 @@ namespace Foody.Controllers
         //UPDATE SHOP
 
 
-        public RedirectToRouteResult UpdateShop()
+        public ActionResult UpdateShopDe()
         {
             DataTable dt = new DataTable();
             try
@@ -225,23 +225,34 @@ namespace Foody.Controllers
             {
 
             }
-            return RedirectToAction("UpdateShopData");
+            return View("../Home/UpdateShopDetails");
         }
         [ActionName("UpdateShopData")]
 
-        public ActionResult UpdateShopData()
+        public ActionResult UpdateShop()
         {
             DataTable dt = new DataTable();
             try
             {
-                dt = obj.GetShopAdmin();
-                ViewData["data"] = dt;
+                string shop_name = Request["shop_name"].ToString();
+                string user_id = Request["user_id"].ToString();
+                string owner_name = Request["owner_name"].ToString();
+                string address = Request["address"].ToString();
+                string pincode = Request["pincode"].ToString();
+                string shop_type = Request["shop_type"].ToString();
+                string mobile = Request["mobile"].ToString();
+                string email = Request["email"].ToString();
+                string registration_no = Request["registration_no"].ToString();
+                string description = Request["description"].ToString();
+                string logitude = Request["logitude"].ToString();
+                string latitude = Request["latitude"].ToString();
+                obj.UpdateShopData(shop_name, user_id, owner_name, address, pincode, shop_type, mobile, email, registration_no, description, logitude, latitude);
             }
             catch
             {
 
             }
-            return View("../Home/UpdateShop");
+            return View("../Home/UpdateShopDetails");
         }
 
 
