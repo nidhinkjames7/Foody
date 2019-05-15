@@ -1,10 +1,25 @@
 ﻿@{
     Layout = "~/Views/Home/Admin.cshtml";
 }
-
-@using (Html.BeginForm(FormMethod.Get))
+             
+@using(Html.BeginForm("SearchShopForm","Home",FormMethod.Post))
 {
-            
+    Html.AntiForgeryToken();
+        System.Data.DataTable dt1=(System.Data.DataTable)Session["data"];
+    <table>
+        <tr>
+            <td>Categories</td>
+            <td>@Html.DropDownList("ShopType", new List<SelectListItem>
+                {
+                    new SelectListItem{ Text="Select", Value=""},
+                    new SelectListItem{ Text="Resturant", Value="resturant"},
+                    new SelectListItem{ Text="Hotel", Value="hotel"},
+                    new SelectListItem{ Text="Thattukada", Value="thattukada"},
+                })</td>
+            <td><input type="submit" name="Search" value="Search" /></td>
+            <td><input type="submit" name="ViewAll"  value="ViewAll"/></td>
+        </tr>
+    </table>
     <center><h1>View Shops</h1></center>
     <table align="center"> 
         <tr>
@@ -43,20 +58,13 @@
                 <td>@row["latitude"]</td>
                 <td>@row["longitude"]</td>
                 <td><a href="../Home/RemoveShop?id=@row["shop_id"]">Remove</a></td>
-                <td><a href="../Home/UpdateShopDe?id=@row["shop_id"]">Update</a></td>
+                <td><a href="../Home/UpdateOneShop?id=@row["shop_id"]">Update</a></td>
             </tr>
         }
 
     </table>
     
- 
-    @*<b>Search Option:</b>
-    @Html.RadioButton("option","Name")<text>Name</text>
-    @Html.RadioButton("option","Type")<text>Type</text>
-    @Html.TextBox("search")<input type="submit" name="submmit" value="search" />*@
 }
-
-
 
 
 

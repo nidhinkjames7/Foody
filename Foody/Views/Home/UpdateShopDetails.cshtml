@@ -10,7 +10,7 @@
 }
 
 <h2>****UPDATE SHOPS****</h2>
-@using (Html.BeginForm("UpdateShop", "Home", FormMethod.Post))
+@using (Html.BeginForm("UpdateShopData", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     
@@ -21,6 +21,7 @@
      }
         @foreach (System.Data.DataRow row in dt.Rows)
         {
+            
             <tr>
                 <td>ShopName</td>
                 <td><input type="text" name="shop_name" value="@row["shop_name"]" /></td>

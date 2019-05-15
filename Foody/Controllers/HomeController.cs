@@ -154,6 +154,7 @@ namespace Foody.Controllers
             {
                 dt = obj.GetShop();
                 ViewData["data"] = dt;
+           //     dt = obj.GetShopType();
             }
             catch
             {
@@ -161,6 +162,9 @@ namespace Foody.Controllers
             }
             return View("../Home/ViewShop");
         }
+
+
+
 
 
         // REMOVE SHOP
@@ -211,14 +215,15 @@ namespace Foody.Controllers
 
         //UPDATE SHOP
 
+        [HttpGet]
 
-        public ActionResult UpdateShopDe()
+        public ActionResult UpdateOneShop()
         {
             DataTable dt = new DataTable();
             try
             {
                 int id = Convert.ToInt32(Request.QueryString["id"].ToString());
-                obj.UpdateShop(id);
+               dt= obj.UpdateShop(id);
                 ViewData["data"] = dt;
             }
             catch (Exception e)
@@ -227,13 +232,18 @@ namespace Foody.Controllers
             }
             return View("../Home/UpdateShopDetails");
         }
+
+
+        [HttpPost]
         [ActionName("UpdateShopData")]
 
-        public ActionResult UpdateShop()
+        
+        public ActionResult UpdateShopData()
         {
             DataTable dt = new DataTable();
             try
             {
+                string shop_id = Request["shop_id"].ToString();
                 string shop_name = Request["shop_name"].ToString();
                 string user_id = Request["user_id"].ToString();
                 string owner_name = Request["owner_name"].ToString();
@@ -246,13 +256,13 @@ namespace Foody.Controllers
                 string description = Request["description"].ToString();
                 string logitude = Request["logitude"].ToString();
                 string latitude = Request["latitude"].ToString();
-                obj.UpdateShopData(shop_name, user_id, owner_name, address, pincode, shop_type, mobile, email, registration_no, description, logitude, latitude);
+                obj.UpdateShopData(shop_id,shop_name, user_id, owner_name, address, pincode, shop_type, mobile, email, registration_no, description, logitude, latitude);
             }
             catch
             {
 
             }
-            return View("../Home/UpdateShopDetails");
+            return RedirectToAction("ViewShop");
         }
 
 
@@ -455,17 +465,29 @@ namespace Foody.Controllers
         }
 
 
-        //public ActionResult searching(string option, string search)
-        //{
-        //    if (option == "Type")
-        //    {
-        //        return View(night_food.shops.where(x => x.Type == search || search == null).ToList());
-        //    }
-        //    else if (option == "Name")
-        //    {
-        //        return View(night_food.shops.where(x => x.Name == search || search == null).ToList());
-        //    }
-        //}
+        [HttpPost]
+        public ActionResult SearchShopForm(Shops shopobj,string Search,string ViewAll)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                if(Search=="Search")
+                {
+                    dt=obj.SearchShop(shopobj);
+                    ViewData["data"] = dt;
+                }
+                else if(ViewAll=="ViewAll")
+                {
+                    dt = obj.GetShop();
+                    ViewData["data"] = dt;
+                }
+            }
+            catch(Exception e)
+            {
+
+            }
+            return View("../Home/ViewShop");
+        }
 
     }
 }

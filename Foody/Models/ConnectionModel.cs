@@ -16,6 +16,7 @@ namespace Foody.Models
 
         public void MakeConnection()
         {
+           // string cnString = "server=lapis.co.in;database=lapisco_nightfoodapp;uid=lapisco_user;pwd=lapisuser@123";
             string cnString = "server=localhost;database=night_food;uid=root;pwd=root";
             con = new MySqlConnection(cnString);
             con.Open();
@@ -54,6 +55,28 @@ namespace Foody.Models
             return dt;
         }
 
+
+
+        //public DataTable GetShopType()
+        //{
+        //    dt = new DataTable();
+        //    try
+        //    {
+        //        MakeConnection();
+        //        cmd = new MySqlCommand("SELECT DISTINCT FROM shops", con);
+        //        reader = cmd.ExecuteReader();
+        //        dt.Load(reader);
+        //        con.Close();
+        //    }
+        //    catch (Exception e)
+        //    {
+
+        //    }
+        //    return dt;
+        //}
+
+
+
         public void RemoveShop(int ShopId)
         {
             try
@@ -90,12 +113,14 @@ namespace Foody.Models
             return dt;
         }
 
-        public void UpdateShopData(string shop_name,int user_id,string owner_name,string address,int pincode,string shop_type,int mobile,string email,string registration_no,string description,string logitude, string latitude)
+        public void UpdateShopData(string shop_id,string shop_name,string user_id,string owner_name,string address,string pincode,string shop_type,string mobile,string email,string registration_no,string description,string longitude, string latitude)
         {
             try
             {
                 MakeConnection();
-                cmd= new MySqlCommand("UPDATE shops SET shop_name='"+shop_name+"',user_id='"+user_id+"',owner_name='"+owner_name+"',address='"+address+"',pincode='"+pincode+"','"+shop_type+"',mobile='"+mobile+"',email='"+email+"',registration_no='"+registration_no+"',description='"+description+"',logitude='"+logitude+"',latitude='"+latitude+"' ",con);
+          //    cmd=new MySqlCommand("UPDATE shops SET shop_name='1',user_id='1',owner_name='1',address='1',pincode='1',shop_type='1',mobile='1',email='1',registration_no='1',description='1',longitude='1',latitude='1' where shop_id='13'",con);
+                cmd= new MySqlCommand("UPDATE shops SET shop_name='"+shop_name+"',user_id='"+user_id+"',owner_name='"+owner_name+"',address='"+address+"',pincode='"+pincode+"',shop_type='"+shop_type+"',mobile='"+mobile+"',email='"+email+"',registration_no='"+registration_no+"',description='"+description+"',longitude='"+longitude+"',latitude='"+latitude+"' where shop_id='"+Convert.ToInt32(shop_id)+"'",con);
+                
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
@@ -275,6 +300,24 @@ namespace Foody.Models
                 con.Close();
             }
             catch (Exception e)
+            {
+
+            }
+            return dt;
+        }
+
+        public DataTable SearchShop(Shops shopobj)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                MakeConnection();
+                cmd = new MySqlCommand("SELECT * FROM shops where shop_type='"+shopobj.ShopType+"'", con);
+                reader = cmd.ExecuteReader();
+                dt.Load(reader);
+                con.Close();
+            }
+            catch(Exception e) 
             {
 
             }
