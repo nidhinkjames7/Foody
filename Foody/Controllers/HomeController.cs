@@ -36,10 +36,8 @@ namespace Foody.Controllers
             return View("../Home/RegisterShop");
         }
 
-
-
+       
         [HttpPost]
-
         public ActionResult RegisterShop(Shops shopobj)
         {
             DataTable dt = new DataTable();

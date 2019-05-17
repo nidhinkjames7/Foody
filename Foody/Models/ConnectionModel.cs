@@ -16,8 +16,8 @@ namespace Foody.Models
 
         public void MakeConnection()
         {
-           // string cnString = "server=lapis.co.in;database=lapisco_nightfoodapp;uid=lapisco_user;pwd=lapisuser@123";
-            string cnString = "server=localhost;database=night_food;uid=root;pwd=root";
+           string cnString = "server=lapis.co.in;database=lapisco_nightfoodapp;uid=lapisco_user;pwd=lapisuser@123";
+            //string cnString = "server=localhost;database=night_food;uid=root;pwd=root";
             con = new MySqlConnection(cnString);
             con.Open();
         }
@@ -28,7 +28,12 @@ namespace Foody.Models
             {
                 MakeConnection();
             //    cmd = new MySqlCommand("INSERT INTO shops values(null,'"+shopobj.ShopName+"','"+shopobj.OwnerName+"','"+shopobj.Address+"','"+shopobj.Pincode+"','"+shopobj.Description+"','"+shopobj.Mobile+"','"+shopobj.Email+"','"+shopobj.RegistrationNo+"','"+shopobj.Latitude+"','"+shopobj.Longitude+"')",con);
-                cmd = new MySqlCommand("INSERT INTO shops(shop_id,user_id,address,mobile,pincode,email,registration_no,description,owner_name,latitude,longitude,shop_name,shop_type)values(null,'"+shopobj.UserId+"','" + shopobj.Address + "','" + shopobj.Mobile + "','" + shopobj.Pincode + "','" + shopobj.Email + "','" + shopobj.RegistrationNo + "','" + shopobj.Description + "','" + shopobj.OwnerName + "','" + shopobj.Latitude + "','" + shopobj.Longitude + "','" + shopobj.ShopName + "','"+shopobj.ShopType+"')", con);
+           //     cmd = new MySqlCommand("INSERT INTO shops(shop_id,user_id,address,mobile,pincode,email,registration_no,description,owner_name,latitude,longitude,shop_name,shop_type)values(null,'"+shopobj.UserId+"','" + shopobj.Address + "','" + shopobj.Mobile + "','" + shopobj.Pincode + "','" + shopobj.Email + "','" + shopobj.RegistrationNo + "','" + shopobj.Description + "','" + shopobj.OwnerName + "','" + shopobj.Latitude + "','" + shopobj.Longitude + "','" + shopobj.ShopName + "','"+shopobj.ShopType+"')", con);
+
+                //cmd = new MySqlCommand("INSERT INTO shops(shop_id,shop_name,shop_address,phone,email,registration_no,user_id,pincode,latitude,longitude,status)values(null,'" + shopobj.ShopName + "','" + shopobj.ShopAddress + "','" + shopobj.Phone + "','" + shopobj.Email + "','" + shopobj.RegistrationNo + "','" + shopobj.UserId + "','" + shopobj.Pincode + "','" + shopobj.Latitude + "','" + shopobj.Longitude + "','" + shopobj.Status + "')", con);
+
+                cmd = new MySqlCommand("INSERT INTO shops values(null,'" + shopobj.ShopType + "','" + shopobj.ShopName + "','" + shopobj.ShopAddress + "','" + shopobj.Phone + "','" + shopobj.Email + "','" + shopobj.RegistrationNo + "','" + shopobj.UserId + "','" + shopobj.Pincode + "','" + shopobj.Latitude + "','" + shopobj.Longitude + "','" + shopobj.Status + "')", con);
+
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
@@ -202,7 +207,7 @@ namespace Foody.Models
             try
             {
                 MakeConnection();
-                cmd = new MySqlCommand("INSERT INTO delivery_boy(boy_id,boy_name,boy_address,mobile,email,photo,pancard_image,pancard_no,pincode,dob)values(null,'" + boyobj.BoyName + "','" + boyobj.BoyAddress + "','" + boyobj.Mobile + "','" + boyobj.Email + "','" + boyobj.Photo + "','" + boyobj.PancardImage + "','" + boyobj.PancardNo + "','" + boyobj.Pincode + "','" + boyobj.Dob + "')", con); 
+                cmd = new MySqlCommand("INSERT INTO delivery_boy(boy_id,boy_name,boy_address,mobile,email,photo,pancard_image,pancard_no,pincode,dob)values(null,'" + boyobj.BoyName + "','" + boyobj.BoyAddress + "','" + boyobj.Phone + "','" + boyobj.Email + "','" + boyobj.Photo + "','" + boyobj.PancardImage + "','" + boyobj.PancardNo + "','" + boyobj.Pincode + "','" + boyobj.Dob + "')", con); 
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
