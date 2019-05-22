@@ -1,5 +1,7 @@
 ﻿@{
-    Layout = "~/Views/Home/Admin.cshtml";
+   // Layout = "~/Views/Home/Admin.cshtml";
+
+    Layout = "~/Views/Home/MyLayout.cshtml";
 }
 
 @using (Html.BeginForm(FormMethod.Get))
@@ -8,15 +10,16 @@
     <table align="center">
         <tr>
             <td>Delivery Boy Id</td>
+            <td>UserId</td>
             <td>Delivery Boy Name</td>
             <td>Address</td>
-            <td>Pincode</td>
-            <td>Date Of Birth</td>
-            <td>Mobile</td>
+            @*<td>Pincode</td>
+            <td>Date Of Birth</td>*@
+            <td>Phone</td>
             <td>E-mail</td>
-            <td>Photo</td>
+            @*<td>Photo</td>
             <td>Pancard Image</td>
-            <td>Pancard Number</td>
+            <td>Pancard Number</td>*@
         </tr>
 
         @{
@@ -25,18 +28,19 @@
         @foreach (System.Data.DataRow row in dt.Rows)
         {
             <tr>
-                <td>@row["boy_id"]</td>
-                <td>@row["boy_name"]</td>
-                <td>@row["boy_address"]</td>
-                <td>@row["pincode"]</td>
-                <td>@row["dob"]</td>
-                <td>@row["mobile"]</td>
+                <td>@row["deliveryboy_id"]</td>
+                <td>@row["user_id"]</td>
+                <td>@row["name"]</td>
+                <td>@row["address"]</td>
+                @*<td>@row["pincode"]</td>
+                <td>@row["dob"]</td>*@
+                <td>@row["phone"]</td>
                 <td>@row["email"]</td>
-                <td>@row["photo"]</td>
+                @*<td>@row["photo"]</td>
                 <td>@row["pancard_image"]</td>
-                <td>@row["pancard_no"]</td>
-                <td><a href="../Home/RemoveDeliveryBoy?id=@row["boy_id"]">Remove</a></td>
-                <td><a href="../Home/UpdateBoy?id=@row["boy_id"]">Update</a></td>
+                <td>@row["pancard_no"]</td>*@
+                <td><a href="../Home/RemoveDeliveryBoy?id=@row["deliveryboy_id"]">Remove</a></td>
+                <td><a href="../Home/UpdateBoy?id=@row["deliveryboy_id"]">Update</a></td>
             </tr>
         }
 

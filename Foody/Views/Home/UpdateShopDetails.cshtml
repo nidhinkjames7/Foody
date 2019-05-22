@@ -11,7 +11,7 @@
 }
 
 <h2>****UPDATE SHOPS****</h2>
-@using (Html.BeginForm("UpdateShopData", "Home", FormMethod.Post))
+@using (Html.BeginForm("UserUpdateShopData", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     
@@ -31,13 +31,13 @@
                 <td>UserId</td>
                 <td><input type="text" name="user_id" value="@row["user_id"]" /></td>
             </tr>
-            <tr>
+            @*<tr>
                 <td>OwnerName</td>
                 <td><input type="text" name="owner_name" value="@row["owner_name"]" /></td>
-            </tr>
+            </tr>*@
             <tr>
                 <td>Address</td>
-                <td><input type="text" name="address" value="@row["address"]" /></td>
+                <td><input type="text" name="address" value="@row["shop_address"]" /></td>
             </tr>
             <tr>
                 <td>Pincode</td>
@@ -49,7 +49,7 @@
             </tr>
             <tr>
                 <td>Mobile</td>
-                <td><input type="text" name="mobile" value="@row["mobile"]" /></td>
+                <td><input type="text" name="phone" value="@row["phone"]" /></td>
             </tr><tr>
                 <td>Email</td>
                 <td><input type="text" name="email" value="@row["email"]" /></td>
@@ -58,10 +58,10 @@
                 <td>Registration No</td>
                 <td><input type="text" name="registration_no" value="@row["registration_no"]" /></td>
             </tr>
-            <tr>
+            @*<tr>
                 <td>Description</td>
                 <td><input type="text" name="description" value="@row["description"]" /></td>
-            </tr>
+            </tr>*@
             <tr>
                 <td>Logitude</td>
                 <td><input type="text" name="logitude" value="@row["longitude"]" /></td>

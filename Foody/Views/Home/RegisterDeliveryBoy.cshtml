@@ -1,106 +1,52 @@
 ﻿@model Foody.Models.DeliveryBoy
 @{
-    Layout = "~/Views/Home/Admin.cshtml";
+    //  Layout = "~/Views/Home/Admin.cshtml";
+    Layout = "~/Views/Home/MyLayout.cshtml";
 }
 
 @{
     ViewBag.Title = "Add";
 }
 
-<h2>Create</h2>
+
+    <h2>REGISTER DELIVERY BOY</h2>
 @using (Html.BeginForm("RegisterDeliveryBoy", "Home", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <h4>Register Delivery Boy</h4>
-        <hr />
 
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.BoyName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BoyName, new { htmlAttributes = new { @class = "form-control" } })
+    
+        <table width="100">
+            <tr>
+                <td>UserId</td>
+                <td>
+                    <input type="text" name="user_id" />
+                </td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="name" /></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><input type="text" name="address" /></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" name="phone" /></td>
+            </tr>
+            <tr>
+                <td>E-mail</td>
+                <td><input type="text" name="email" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input id="submit" type="submit" value="submit" /></td>
+            </tr>
+        </table>
+  
 
-            </div>
-        </div>*@
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
-
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextArea("address", "", new { @class = "form-control" })
-
-            </div>
-        </div>
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.Pincode, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Pincode, new { htmlAttributes = new { @class = "form-control" } })
-
-            </div>
-        </div>*@
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.Dob, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Dob, new { htmlAttributes = new { @class = "form-control" } })
-
-            </div>
-        </div>*@
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-
-            </div>
-        </div>
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
-
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.PancardNo, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.PancardNo, new { htmlAttributes = new { @class = "form-control" } })
-
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.PancardImage, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.PancardImage, new { htmlAttributes = new { @class = "form-control" } })
-
-                </div>
-            </div>
-
-        </di*@v>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" />
-            </div>
-        </div>
-    </div>
 }
+   
 
 

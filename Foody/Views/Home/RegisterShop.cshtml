@@ -12,135 +12,78 @@
 
 
 <h2>SHOP REGISTRATION</h2>
-@using (Html.BeginForm("RegisterShop", "Home", FormMethod.Post))
+@using (Html.BeginForm("RegisterShopHere", "Home", FormMethod.Post))
 {
-     <div class="form-horizontal">
-        <h4>Shop  Register</h4>
-        <hr />
-
-        <div class="form-group">
-            
-                @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(Model=> Model.UserId)
-            </div>
-        </div>
-
-
-        <div class="form-group">
-                @Html.LabelFor(model => model.ShopName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ShopName, new { htmlAttributes = new { @class = "form-control" } })
-
-            </div>
-        </div>
-
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.OwnerName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.OwnerName, new { htmlAttributes = new { @class = "form-control" } })
-
-                </div>
-        </div>*@
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ShopAddress, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-               @Html.EditorFor(model => model.ShopAddress, new { htmlAttributes = new { @class = "form-control" } })
-
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Pincode, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Pincode, new { htmlAttributes = new { @class = "form-control" } })
-
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ShopType, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ShopType",new List<SelectListItem>
-                {
-                    new SelectListItem{ Text="Select", Value=""},
-                    new SelectListItem{ Text="Resturant", Value="resturant"},
-                    new SelectListItem{ Text="Hotel", Value="hotel"},
-                    new SelectListItem{ Text="Thattukada", Value="thattukada"},
-                })
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.RegistrationNo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RegistrationNo, new { htmlAttributes = new { @class = "form-control" } })
-
-            </div>
-            @*<div class="form-group">
-                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-
-                </div>
-            </div>*@
-            
-            <div class="form-group">
-                @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
-
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
-
-                </div>
-            </div>
-
-
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-
-                </div>
-            </div>
-
-
-
-
-
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" />
-            </div>
-        </div>
-    </div>
+    
+    <table width="100">
+            <tr>
+                <td>Shop Type</td>
+                <td>
+                    <select name="shop_type" required>
+                        <option>Select</option>
+                        <option value="hotel">Hotel</option>
+                        <option value="resturent">Resturent</option>
+                        <option value="thattukada">Thattukada</option>
+                    </select>
+                </td>
+                @*<td><input type="text" name="shop_type" /></td>*@
+            </tr>
+            <tr>
+                <td>UserId</td>
+                <td>
+                    <input type="text" name="user_id" required />
+                </td>
+            </tr>
+            <tr>
+                <td>Shop Name</td>
+                <td><input type="text" name="shop_name" required /></td>
+            </tr>
+         
+            <tr>
+                <td>Shop Address</td>
+                <td><input type="text" name="shop_address"  required/></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="number" name="phone" required /></td>
+            </tr>
+            <tr>
+            <tr>
+                <td>Pincode</td>
+                <td><input type="number" name="pincode" /></td>
+            </tr>
+            <tr>
+            <tr>
+                <td>E-mail</td>
+                <td><input type="email" name="email" /></td>
+            </tr>
+            <tr>
+            <tr>
+                <td>Registration No</td>
+                <td><input type="text" name="registration_no" /></td>
+            </tr>
+            <tr>
+            <tr>
+                <td>Latitude</td>
+                <td><input type="text" name="latitude" /></td>
+            </tr>
+            <tr>
+            <tr>
+                <td>Longitude</td>
+                <td><input type="text" name="longitude" /></td>
+            </tr>
+            <tr>
+            <tr>
+                <td>Status</td>
+                <td><input type="text" name="status" /></td>
+            </tr>
+            <tr>
+            <td></td>
+            <td><input id="submit" type="submit" value="submit" /></td>
+        </tr>
+        </table>
+    
+    
+    
 }
 

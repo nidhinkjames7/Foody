@@ -38,18 +38,30 @@ namespace Foody.Controllers
 
        
         [HttpPost]
-        public ActionResult RegisterShop(Shops shopobj)
+        public ActionResult RegisterShopHere()
         {
             DataTable dt = new DataTable();
             try
             {
-                obj.InsertShop(shopobj);
+        //        string ShopId = Request["shop_id"].ToString();
+                string ShopType = Request["shop_type"].ToString();
+                string UserId = Request["user_id"].ToString();
+                string ShopName = Request["shop_name"].ToString();
+                string ShopAddress = Request["shop_address"].ToString();
+                string Phone = Request["phone"].ToString();
+                string Pincode = Request["pincode"].ToString();
+                string Email = Request["email"].ToString();
+                string RegistrationNo =Request["registration_no"].ToString();
+                string Latitude =Request["latitude"].ToString();
+                string Longitude =Request["longitude"].ToString();
+                string Status = Request["status"].ToString();
+                obj.InsertShop(ShopType, UserId, ShopName,ShopAddress, Phone, Pincode, Email, RegistrationNo, Latitude, Longitude, Status);
             }
             catch
             {
 
             }
-            return View();
+            return View("../Home/RegisterShop");
         }
 
 
@@ -233,10 +245,10 @@ namespace Foody.Controllers
 
 
         [HttpPost]
-        [ActionName("UpdateShopData")]
+        [ActionName("UserUpdateShopData")]
 
         
-        public ActionResult UpdateShopData()
+        public ActionResult UserUpdateShopData()
         {
             DataTable dt = new DataTable();
             try
@@ -244,19 +256,20 @@ namespace Foody.Controllers
                 string shop_id = Request["shop_id"].ToString();
                 string shop_name = Request["shop_name"].ToString();
                 string user_id = Request["user_id"].ToString();
-                string owner_name = Request["owner_name"].ToString();
-                string address = Request["address"].ToString();
+             //   string owner_name = Request["owner_name"].ToString();
+                string address = Request["shop_address"].ToString();
                 string pincode = Request["pincode"].ToString();
                 string shop_type = Request["shop_type"].ToString();
-                string mobile = Request["mobile"].ToString();
+                string phone = Request["phone"].ToString();
                 string email = Request["email"].ToString();
                 string registration_no = Request["registration_no"].ToString();
-                string description = Request["description"].ToString();
-                string logitude = Request["logitude"].ToString();
+            //    string description = Request["description"].ToString();
+                string logitude = Request["longitude"].ToString();
                 string latitude = Request["latitude"].ToString();
-                obj.UpdateShopData(shop_id,shop_name, user_id, owner_name, address, pincode, shop_type, mobile, email, registration_no, description, logitude, latitude);
+               // obj.UpdateShopData(shop_id,shop_name, user_id, owner_name, address, pincode, shop_type, mobile, email, registration_no, description, logitude, latitude);
+                obj.UpdateShopDataHere(shop_id, shop_name, user_id, address, pincode, shop_type, phone, email, registration_no, logitude, latitude);
             }
-            catch
+            catch(Exception e)
             {
 
             }
@@ -286,7 +299,13 @@ namespace Foody.Controllers
             DataTable dt = new DataTable();
             try
             {
-                obj.InsertBoy(boyobj);
+           //     obj.InsertBoy(boyobj);
+                string UserId = Request["user_id"].ToString();
+                string Name = Request["name"].ToString();
+                string Address = Request["address"].ToString();
+                string Phone = Request["phone"].ToString();
+                string Email = Request["email"].ToString();
+                obj.InsertBoy(UserId, Name, Address, Phone, Email);
             }
             catch (Exception e)
             {
@@ -378,8 +397,47 @@ namespace Foody.Controllers
 
 
         
+        //VIEW DELIVERY BOY RATING
 
 
+        [HttpGet]
+
+        public ActionResult ViewDeliveryBoyRating()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = obj.GetDeliveryBoyRating();
+                ViewData["data"] = dt;
+            }
+            catch
+            {
+
+            }
+            return View("../Home/ViewDeliveryBoyRating");
+        }
+
+
+
+        // VIEW SHOP RATING
+
+
+        [HttpGet]
+
+        public ActionResult ViewShopRating()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = obj.GetShopRating();
+                ViewData["data"] = dt;
+            }
+            catch
+            {
+
+            }
+            return View("../Home/ViewShopRating");
+        }
 
 
 
@@ -401,6 +459,30 @@ namespace Foody.Controllers
             }
             return View("../Home/ViewFoodyReview");
         }
+
+
+
+        //VIEW DELIVERY BOY REVIEW
+
+        [HttpGet]
+
+        public ActionResult ViewDeliveryBoyReview()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = obj.GetDeliveryBoyReview();
+                ViewData["data"] = dt;
+            }
+            catch
+            {
+
+            }
+            return View("../Home/ViewDeliveryBoyReview");
+        }
+
+
+
 
 
 

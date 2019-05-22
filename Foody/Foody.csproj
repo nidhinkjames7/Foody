@@ -238,6 +238,10 @@
     <Content Include="Views\Home\UpdateShopDetails.cshtml" />
     <Content Include="Views\Home\MyLayout.cshtml" />
     <Content Include="Views\Home\ContentSample.cshtml" />
+    <Content Include="Views\Home\ViewDeliveryBoyRating.cshtml" />
+    <Content Include="Views\Home\ViewDeliveryBoyReview.cshtml" />
+    <Content Include="Views\Home\ViewShopRating.cshtml" />
+    <Content Include="Views\Home\ViewShopReview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
