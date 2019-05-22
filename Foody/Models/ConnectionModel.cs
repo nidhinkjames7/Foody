@@ -369,6 +369,29 @@ namespace Foody.Models
 
 
 
+        // SHOP REVIEW
+
+
+        public DataTable GetShopReview()
+        {
+            dt = new DataTable();
+            try
+            {
+                MakeConnection();
+                cmd = new MySqlCommand("SELECT * FROM review_shop", con);
+                reader = cmd.ExecuteReader();
+                dt.Load(reader);
+                con.Close();
+            }
+            catch (Exception e)
+            {
+
+            }
+            return dt;
+        }
+
+
+
         public DataTable SelectShop(string type)
         {
             try

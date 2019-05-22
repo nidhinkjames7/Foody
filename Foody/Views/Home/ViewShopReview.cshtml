@@ -5,11 +5,12 @@
 
 @using (Html.BeginForm(FormMethod.Get))
 {
-    <center><h1>View Reviews</h1></center>
+    <center><h1>View Shop Reviews</h1></center>
     <table align="center">
         <tr>
             <td>Review Id</td>
             <td>User Id</td>
+            <td>Shop Id</td>
             <td>Date</td>
             <td>Review</td>
         </tr>
@@ -22,6 +23,7 @@
             <tr>
                 <td>@row["review_id"]</td>
                 <td>@row["uid"]</td>
+                <td>@row["shop_id"]</td>
                 <td>@row["review_date"]</td>
                 <td>@row["review_details"]</td>
             </tr>

@@ -483,6 +483,26 @@ namespace Foody.Controllers
 
 
 
+        //VIEW SHOP REVIEW
+
+        [HttpGet]
+
+        public ActionResult ViewShopReview()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                dt = obj.GetShopReview();
+                ViewData["data"] = dt;
+            }
+            catch
+            {
+
+            }
+            return View("../Home/ViewShopReview");
+        }
+
+
 
 
 
